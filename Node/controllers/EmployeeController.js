@@ -3,8 +3,9 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectID; 
 var {Employee} = require('../model/Employee');
 
-//Get All
 //localhost:3000/employees/
+
+//Get All
 router.get('/', (req, res) => {
     Employee.find((err, docs) => {
         if(!err){
@@ -32,7 +33,6 @@ router.get('/:id', (req, res) => {
 });
 
 //Insert
-//localhost:3000/employees/
 router.post('/', (req, res)=>{
     var emp = new Employee({
         name: req.body.name,
