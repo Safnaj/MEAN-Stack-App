@@ -14,11 +14,18 @@ export class EmployeeService {
   selectedEmployee: Employee;
   employees: Employee[];
 
-  readonly baseURL = 'http://localhost:300/employees';
+  readonly baseURL = 'http://localhost:3000/employees';
 
   constructor(private http: HttpClient) { }
 
-  postEmployee(emp : Employee){
+  //Insert Employee
+  postEmployee(emp: Employee) {
     return this.http.post(this.baseURL, emp);
   }
+
+  //Get Employees List
+  getEmployeeList(){
+    return this.http.get(this.baseURL);
+  }
+
 }
