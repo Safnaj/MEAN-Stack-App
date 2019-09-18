@@ -35,11 +35,19 @@ export class EmployeeComponent implements OnInit {
 
   //Insert via Employee Service
   onSubmit(form: NgForm) {
-    this.employeeService.postEmployee(form.value).subscribe((res) => {
-      this.resetForm(form);    
-      this.refreshEmployeesList(); 
-    M.toast({ html: 'Saved successfully', classes: 'rounded' });
-    });
+    if(form.value._id == ""){
+      this.employeeService.postEmployee(form.value).subscribe((res) => {
+        this.resetForm(form);    
+        this.refreshEmployeesList(); 
+      M.toast({ html: 'Saved successfully', classes: 'rounded' });
+      });
+    }else{ //Updating Employee
+      this.employeeService.putEmployee(form.value).subscribe((res) => {
+          this.resetForm(form);
+          this.refreshEmployeesList(); 
+        M.toast({ html: 'Updated Successfully', classes: 'rounded'});
+      });
+    }
   }
 
   //Get All Employees
@@ -48,5 +56,22 @@ export class EmployeeComponent implements OnInit {
       this.employeeService.employees = res as Employee[];
     });
   }
+
+  //Select for Edit
+  onEdit(emp : Employee){
+    this.employeeService.selectedEmployee = emp;
+  }
+
+  //Delete Employee
+  onDelete(_id: string, form: NgForm){
+    if(confirm('Are you sure to Delete this record ?')== true){
+      this.employeeService.deleteEmployee(_id).subscribe((res) => {
+        this.refreshEmployeesList(); 
+        this.resetForm(form);
+        M.toast({ html: 'Deleted Successfully', classes: 'rounded'});
+      });      
+    }
+  }
+  
 
 }

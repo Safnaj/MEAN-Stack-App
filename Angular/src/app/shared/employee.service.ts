@@ -28,4 +28,14 @@ export class EmployeeService {
     return this.http.get(this.baseURL);
   }
 
+  //Update Employee
+  putEmployee(emp: Employee){
+    return this.http.put(this.baseURL + `/${emp._id}`, emp);
+  }
+  
+  //Delete Employee
+  deleteEmployee(_id: String){
+    return this.http.delete(this.baseURL + `/${_id}` );
+  }
+
 }
