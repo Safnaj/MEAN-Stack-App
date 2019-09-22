@@ -1,2 +1,8 @@
 # Mean-Stack-App
-Full Stack Application Developed using MongoDB, ExpressJS, Angular &amp; NodeJS
+
+### Technologies Used :
+* MongoDB
+* Angular
+* Express.js
+* Node.js
+
