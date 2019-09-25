@@ -2,7 +2,7 @@
 
 ### Technologies Used :
 * MongoDB
-* Angular
+* Angular7
 * Express.js
 * Node.js
 
